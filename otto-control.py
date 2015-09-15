@@ -27,11 +27,11 @@ class App:
 
 
 
-root = Tk()
-root.wm_title('Servo Control')
-app = App(root)
-root.geometry("200x50+0+0")
-root.mainloop()
+# root = Tk()
+# root.wm_title('Servo Control')
+# app = App(root)
+# root.geometry("200x50+0+0")
+# root.mainloop()
 
 
 @app.route("/")
@@ -42,11 +42,12 @@ def main():
         'title' : 'HELLO!',
         'time': timeString
         }
-    root = Tk()
-    root.wm_title('Servo Control')
-    app = App(root)
-    root.geometry("200x50+0+0")
-    root.mainloop()
+    # root = Tk()
+    # root.wm_title('Servo Control')
+    # app = App(root)
+    # root.geometry("200x50+0+0")
+    # root.mainloop()
+    pwm.start(5)
     return render_template('main.html', **templateData)
 
 
