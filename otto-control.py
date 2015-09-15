@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 from flask import Flask, render_template, request
+import datetime
 app = Flask(__name__)
 
 from Tkinter import *
@@ -24,31 +25,32 @@ pwm = GPIO.PWM(18, 100)
 
 @app.route("/")
 def main():
+    pwm.start(0)
     now = datetime.datetime.now()
     timeString = now.strftime("%Y-%m-%d %H:%M")
     templateData = {
         'title' : 'HELLO!',
         'time': timeString
         }
-    pwm.start(0)
+    
     return render_template('main.html', **templateData)
 
 @app.route("/forward")
 def forward():
+    pwm.start(50)
     templateData = {
         'value': '50',
         'title': 'FORWARD'
     }
-    pwm.start(50)
     return render_template('dir.html')
     
 @app.route("/backward")
 def backward():
+    pwm.start(2)
     templateData = {
         'value': '2',
         'title': 'BACKWARD'
     }
-    pwm.start(2)
     return render_template('dir.html')
 
 if __name__ == "__main__":
