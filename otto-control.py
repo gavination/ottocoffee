@@ -37,11 +37,11 @@ root.mainloop()
 @app.route("/")
 def main():
     now = datetime.datetime.now()
-   timeString = now.strftime("%Y-%m-%d %H:%M")
-   templateData = {
-      'title' : 'HELLO!',
-      'time': timeString
-      }
+    timeString = now.strftime("%Y-%m-%d %H:%M")
+    templateData = {
+        'title' : 'HELLO!',
+        'time': timeString
+        }
     root = Tk()
     root.wm_title('Servo Control')
     app = App(root)
